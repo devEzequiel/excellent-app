@@ -1,0 +1,59 @@
+<div class="container mt-4">
+  <h1 class="text-primary mb-4">Create Client</h1>
+
+  <form [formGroup]="clientForm" (ngSubmit)="save()">
+    <!-- Campo: CNPJ -->
+    <div class="mb-3">
+      <label for="cnpj" class="form-label">CNPJ</label>
+      <input
+        id="cnpj"
+        class="form-control"
+        formControlName="cnpj"
+        placeholder="00.000.000/0000-00"
+        (blur)="onCnpjBlur()"
+        [class.is-invalid]="clientForm.get('cnpj')?.invalid && clientForm.get('cnpj')?.touched"
+      />
+      <div *ngIf="clientForm.get('cnpj')?.invalid && clientForm.get('cnpj')?.touched" class="invalid-feedback">
+        CNPJ inválido ou obrigatório. Formato esperado: 00.000.000/0000-00.
+      </div>
+    </div>
+
+    <!-- Campo: Corporate Name -->
+    <div class="mb-3">
+      <label for="corporate_name" class="form-label">Corporate Name</label>
+      <input
+        id="corporate_name"
+        class="form-control"
+        formControlName="corporate_name"
+        placeholder="Auto-preenchido por CNPJ"
+        [class.is-invalid]="clientForm.get('corporate_name')?.invalid && clientForm.get('corporate_name')?.touched"
+      />
+      <div *ngIf="clientForm.get('corporate_name')?.invalid && clientForm.get('corporate_name')?.touched" class="invalid-feedback">
+        Este campo é obrigatório.
+      </div>
+    </div>
+
+    <!-- Campo: Email -->
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input
+        id="email"
+        class="form-control"
+        type="email"
+        formControlName="email"
+        placeholder="Auto-preenchido por CNPJ ou informe manualmente"
+        [class.is-invalid]="clientForm.get('email')?.invalid && clientForm.get('email')?.touched"
+      />
+      <div *ngIf="clientForm.get('email')?.invalid && clientForm.get('email')?.touched" class="invalid-feedback">
+        Insira um email válido.
+      </div>
+    </div>
+
+    <!-- Botão de Salvar -->
+    <div class="d-flex justify-content-end">
+      <button type="submit" class="btn btn-primary" [disabled]="clientForm.invalid">
+        <i class="bi bi-save"></i> Save
+      </button>
+    </div>
+  </form>
+</div>
