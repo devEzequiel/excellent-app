@@ -1,0 +1,61 @@
+<div class="container mt-5">
+  <h1 class="text-primary mb-4">Create Product</h1>
+  <form [formGroup]="productForm" (ngSubmit)="submitForm()" novalidate>
+    <!-- Campo de Descrição -->
+    <div class="form-group mb-3">
+      <label for="description" class="form-label">Description</label>
+      <input
+        id="description"
+        formControlName="description"
+        class="form-control"
+        [ngClass]="{'is-invalid': productForm.get('description')?.invalid && productForm.get('description')?.touched}"
+        placeholder="Enter product description"
+      />
+      <div *ngIf="productForm.get('description')?.invalid && productForm.get('description')?.touched" class="invalid-feedback">
+        Description is required.
+      </div>
+    </div>
+
+    <!-- Campo de Preço -->
+    <div class="form-group mb-3">
+      <label for="price" class="form-label">Price</label>
+      <input
+        id="price"
+        type="number"
+        formControlName="price"
+        class="form-control"
+        [ngClass]="{'is-invalid': productForm.get('price')?.invalid && productForm.get('price')?.touched}"
+        placeholder="0.00"
+      />
+      <div *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched" class="invalid-feedback">
+        Price must be greater than 0.
+      </div>
+    </div>
+
+    <!-- Campo de Estoque -->
+    <div class="form-group mb-3">
+      <label for="stock" class="form-label">Stock</label>
+      <input
+        id="stock"
+        type="number"
+        formControlName="stock"
+        class="form-control"
+        [ngClass]="{'is-invalid': productForm.get('stock')?.invalid && productForm.get('stock')?.touched}"
+        placeholder="Enter stock quantity"
+      />
+      <div *ngIf="productForm.get('stock')?.invalid && productForm.get('stock')?.touched" class="invalid-feedback">
+        Stock must be a positive number.
+      </div>
+    </div>
+
+    <!-- Botão para Submissão -->
+    <div class="d-flex justify-content-between align-items-center mt-4">
+      <button type="submit" class="btn btn-success btn-lg" [disabled]="productForm.invalid">
+        <i class="bi bi-check-circle"></i> Submit
+      </button>
+      <a routerLink="/products" class="btn btn-secondary btn-lg">
+        <i class="bi bi-arrow-left-circle"></i> Back
+      </a>
+    </div>
+  </form>
+</div>
