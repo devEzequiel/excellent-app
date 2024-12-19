@@ -1,0 +1,73 @@
+<div class="container mt-4">
+  <h1 class="text-primary mb-4">Orders</h1>
+  <a class="btn btn-success mb-3" routerLink="/orders/create">Create New Order</a>
+
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let order of orders">
+      <div class="card h-100">
+        <div class="card-header text-white bg-primary">
+          <h5>{{ order.client?.corporate_name }}</h5>
+        </div>
+
+        <div class="card-body">
+          <p><strong>Total: </strong>{{ order.total | currency }}</p>
+
+          <p *ngIf="order.products && order.products.length > 0"><strong>Products:</strong></p>
+          <ul *ngIf="order.products && order.products.length > 0">
+            <li *ngFor="let product of order.products">
+              {{ product.product.description }} (x{{ product.quantity }})
+            </li>
+          </ul>
+          <p *ngIf="!order.products || order.products.length === 0">
+            <em>No products in this order.</em>
+          </p>
+        </div>
+
+        <div class="card-footer text-end">
+          <button
+            class="btn btn-danger btn-sm"
+            (click)="openDeleteModal(order)"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    id="deleteModal"
+    class="modal"
+    tabindex="-1"
+    aria-hidden="true"
+    style="display: none;"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirm Delete</h5>
+          <button
+            type="button"
+            class="btn-close"
+            (click)="closeModal()"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Are you sure you want to delete the order for
+            <strong>{{ selectedOrder?.client?.corporate_name }}</strong>?
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">
+            Cancel
+          </button>
+          <button type="button" class="btn btn-danger" (click)="deleteOrder()">
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

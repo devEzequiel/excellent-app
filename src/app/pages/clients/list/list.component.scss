@@ -1,0 +1,25 @@
+/* Estilo customizado para o botão Delete */
+.btn-delete {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-delete:hover {
+  background-color: #dc3545; /* Vermelho escuro */
+  color: #fff;
+}
+
+/* Estilos para a modal */
+.modal {
+  transition: opacity 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1050;
+}
+
+.modal.show {
+  opacity: 1;
+}
+
+.modal:not(.show) {
+  opacity: 0;
+  pointer-events: none;
+}

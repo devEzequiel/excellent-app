@@ -1,0 +1,58 @@
+.container {
+  padding: 20px;
+  background: #f4f6f9;
+}
+h1 {
+  color: #0056b3;
+}
+.button {
+  display: inline-block;
+  padding: 10px 15px;
+  background: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table th, .table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+h1 {
+  font-weight: bold;
+}
+
+.btn-success {
+  background-color: #28a745; /* Customize se quiser um verde diferente */
+  border-color: #28a745;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-success:hover {
+  background-color: #218838; /* Verde mais escuro no hover */
+  border-color: #1e7e34;
+}
+
+table tr.text-danger td {
+  font-weight: bold;
+}
+
+.modal {
+  transition: opacity 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1050;
+}
+
+.modal.show {
+  opacity: 1;
+}
+
+.modal:not(.show) {
+  opacity: 0;
+  pointer-events: none;
+}
