@@ -1,0 +1,30 @@
+<div class="container mt-4">
+  <h1 class="text-primary mb-4">Upload Images</h1>
+  <p><strong>Product ID:</strong> {{ productId }}</p>
+
+  <form [formGroup]="uploadForm" (ngSubmit)="uploadImages()">
+    <!-- Input de Upload de Arquivos -->
+    <div class="mb-3">
+      <label for="images" class="form-label">Select Images</label>
+      <input
+        type="file"
+        class="form-control"
+        id="images"
+        (change)="onFileChange($event)"
+        multiple
+        accept="image/*"
+      />
+      <div *ngIf="uploadForm.get('images')?.invalid && uploadForm.get('images')?.touched" class="text-danger">
+        Please select at least one image.
+      </div>
+    </div>
+
+    <!-- Botões -->
+    <button type="submit" class="btn btn-primary" [disabled]="uploadForm.invalid">
+      Upload Images
+    </button>
+    <button type="button" class="btn btn-secondary" (click)="router.navigate(['/products'])">
+      Cancel
+    </button>
+  </form>
+</div>
