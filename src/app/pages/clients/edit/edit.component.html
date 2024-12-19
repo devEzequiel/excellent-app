@@ -1,0 +1,15 @@
+<div class="form-container">
+  <h2>Edit Client</h2>
+  <form (ngSubmit)="update()">
+    <label>Corporate Name</label>
+    <input [(ngModel)]="client.corporate_name" name="corporate_name" required />
+
+    <label>CNPJ</label>
+    <input [(ngModel)]="client.cnpj" name="cnpj" required />
+
+    <label>Email</label>
+    <input [(ngModel)]="client.email" name="email" type="email" required />
+
+    <button type="submit">Update</button>
+  </form>
+</div>

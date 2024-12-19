@@ -1,0 +1,29 @@
+.header {
+  background-color: #343a40;
+  color: #fff;
+  padding: 10px;
+
+  nav .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+
+    li {
+      a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+
+        &:hover {
+          text-decoration: underline;
+        }
+
+        &.active-link {
+          color: #007bff;
+        }
+      }
+    }
+  }
+}
